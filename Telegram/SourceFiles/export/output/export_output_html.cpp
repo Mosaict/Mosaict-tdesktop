@@ -1058,7 +1058,7 @@ auto HtmlWriter::Wrap::pushMessage(
 			dialog,
 			basePath,
 			"This message is not supported by this version "
-			"of Telegram Desktop. Please update the application.") };
+			"of Teamgram Desktop. Please update the application.") };
 	}
 
 	const auto wrapReplyToLink = [&](const QByteArray &text) {
@@ -1188,7 +1188,7 @@ auto HtmlWriter::Wrap::pushMessage(
 		return "You have sent the following documents: "
 			+ SerializeList(list);
 	}, [&](const ActionContactSignUp &data) {
-		return serviceFrom + " joined Telegram";
+		return serviceFrom + " joined Teamgram";
 	}, [&](const ActionGeoProximityReached &data) {
 		const auto fromName = peers.wrapPeerName(data.fromId);
 		const auto toName = peers.wrapPeerName(data.toId);
@@ -1270,7 +1270,7 @@ auto HtmlWriter::Wrap::pushMessage(
 		return serviceFrom
 			+ " sent you a gift for "
 			+ data.cost
-			+ ": Telegram Premium for "
+			+ ": Teamgram Premium for "
 			+ QString::number(data.months).toUtf8()
 			+ " months.";
 	}, [&](const ActionTopicCreate &data) {
@@ -1304,36 +1304,36 @@ auto HtmlWriter::Wrap::pushMessage(
 				: " set a new background for this chat");
 	}, [&](const ActionGiftCode &data) {
 		return data.unclaimed
-			? ("This is an unclaimed Telegram Premium for "
+			? ("This is an unclaimed Teamgram Premium for "
 				+ NumberToString(data.months)
 				+ (data.months > 1 ? " months" : "month")
 				+ " prize in a giveaway organized by a channel.")
 			: data.viaGiveaway
-			? ("You won a Telegram Premium for "
+			? ("You won a Teamgram Premium for "
 				+ NumberToString(data.months)
 				+ (data.months > 1 ? " months" : "month")
 				+ " prize in a giveaway organized by a channel.")
-			: ("You've received a Telegram Premium for "
+			: ("You've received a Teamgram Premium for "
 				+ NumberToString(data.months)
 				+ (data.months > 1 ? " months" : "month")
 				+ " gift from a channel.");
 	}, [&](const ActionGiveawayLaunch &data) {
 		return serviceFrom + " just started a giveaway "
-			"of Telegram Premium subscriptions to its followers.";
+			"of Teamgram Premium subscriptions to its followers.";
 	}, [&](const ActionGiveawayResults &data) {
 		return !data.winners
 			? "No winners of the giveaway could be selected."
 			: (data.credits && data.unclaimed)
 			? "Some winners of the giveaway were randomly selected by "
-				"Telegram and received their prize."
+				"Teamgram and received their prize."
 			: (!data.credits && data.unclaimed)
 			? "Some winners of the giveaway were randomly selected by "
-				"Telegram and received private messages with giftcodes."
+				"Teamgram and received private messages with giftcodes."
 			: (data.credits && !data.unclaimed)
 			? NumberToString(data.winners) + " of the giveaway was randomly "
-				"selected by Telegram and received their prize."
+				"selected by Teamgram and received their prize."
 			: NumberToString(data.winners) + " of the giveaway was randomly "
-				"selected by Telegram and received private messages with "
+				"selected by Teamgram and received private messages with "
 				"giftcodes.";
 	}, [&](const ActionBoostApply &data) {
 		return serviceFrom
@@ -1355,18 +1355,18 @@ auto HtmlWriter::Wrap::pushMessage(
 			+ data.cost
 			+ ": "
 			+ QString::number(data.credits).toUtf8()
-			+ " Telegram Stars.";
+			+ " Teamgram Stars.";
 	}, [&](const ActionPrizeStars &data) {
 		return "You won a prize in a giveaway organized by "
 			+ peers.wrapPeerName(data.peerId)
 			+ ".\n Your prize is "
 			+ QString::number(data.amount).toUtf8()
-			+ " Telegram Stars.";
+			+ " Teamgram Stars.";
 	}, [&](const ActionStarGift &data) {
 		return serviceFrom
 			+ " sent you a gift of "
 			+ QByteArray::number(data.stars)
-			+ " Telegram Stars.";
+			+ " Teamgram Stars.";
 	}, [&](const ActionPaidMessagesRefunded &data) {
 		auto result = message.out
 			? ("You refunded "
@@ -1385,7 +1385,7 @@ auto HtmlWriter::Wrap::pushMessage(
 	}, [&](const ActionPaidMessagesPrice &data) {
 		auto result = "Price per messages changed to "
 			+ QString::number(data.stars).toUtf8()
-			+ " Telegram Stars.";
+			+ " Teamgram Stars.";
 		return result;
 	}, [](v::null_t) { return QByteArray(); });
 
@@ -2082,8 +2082,8 @@ QByteArray HtmlWriter::Wrap::pushGiveaway(
 			+ Data::NumberToString(data.quantity)
 			+ "</b> "
 			+ SerializeString((data.quantity > 1)
-				? "Telegram Premium Subscriptions"
-				: "Telegram Premium Subscription")
+				? "Teamgram Premium Subscriptions"
+				: "Teamgram Premium Subscription")
 			+ " for <b>" + Data::NumberToString(data.months) + "</b> "
 			+ (data.months > 1 ? "months." : "month."));
 	}
@@ -2204,7 +2204,7 @@ QByteArray HtmlWriter::Wrap::pushGiveaway(
 		+ SerializeString((data.winnersCount > 1) ? "winners" : "winner")
 		+ " of the "
 		+ wrapMessageLink(data.launchId, "Giveaway")
-		+ " was randomly selected by Telegram.");
+		+ " was randomly selected by Teamgram.");
 	result.append(popTag());
 
 	result.append(pushDiv("section_title bold"));

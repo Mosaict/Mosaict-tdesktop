@@ -399,7 +399,7 @@ void start() {
 	}
 
 #ifdef Q_OS_WIN
-	if (cWorkingDir() == psAppDataPath()) { // fix old "Telegram Win (Unofficial)" version
+	if (cWorkingDir() == psAppDataPath()) { // fix old "Teamgram Win (Unofficial)" version
 		MoveOldDataFiles(psAppDataPathOld());
 	}
 #elif !defined Q_OS_MAC && !defined _DEBUG // fix first version
