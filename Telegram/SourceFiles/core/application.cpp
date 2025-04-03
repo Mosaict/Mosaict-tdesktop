@@ -681,7 +681,7 @@ bool Application::eventFilter(QObject *object, QEvent *e) {
 			if (const auto file = event->file(); !file.isEmpty()) {
 				_filesToOpen.append(file);
 				_fileOpenTimer.callOnce(kFileOpenTimeoutMs);
-			} else if (event->url().scheme() == u"tg"_q
+			} else if (event->url().scheme() == u"tg2"_q
 				|| event->url().scheme() == u"tonsite"_q) {
 				const auto url = QString::fromUtf8(
 					event->url().toEncoded().trimmed());
@@ -1817,7 +1817,7 @@ void Application::RegisterUrlScheme() {
 	base::Platform::RegisterUrlScheme(base::Platform::UrlSchemeDescriptor{
 		.executable = Platform::ExecutablePathForShortcuts(),
 		.arguments = arguments,
-		.protocol = u"tg"_q,
+		.protocol = u"tg2"_q,
 		.protocolName = u"Teamgram Link"_q,
 		.shortAppName = u"tdesktop"_q,
 		.longAppName = QCoreApplication::applicationName(),
