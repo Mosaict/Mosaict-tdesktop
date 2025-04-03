@@ -1247,10 +1247,7 @@ bool PreferForUri(const QString &uri) {
 	const auto url = QUrl(uri);
 	const auto host = url.host().toLower();
 	const auto path = url.path().toLower();
-	return (host == u"telegra.ph"_q)
-		|| (host == u"te.legra.ph"_q)
-		|| (host == u"graph.org"_q)
-		|| (host == u"telegram.org"_q
+	return (host == u"teamgram.net"_q
 			&& (path.startsWith(u"/faq"_q)
 				|| path.startsWith(u"/privacy"_q)
 				|| path.startsWith(u"/blog"_q)));

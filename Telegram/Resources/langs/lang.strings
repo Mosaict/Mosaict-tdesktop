@@ -1170,7 +1170,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_settings_faq_button" = "Go to FAQ";
 "lng_settings_ask_ok" = "Ask a Volunteer";
 "lng_settings_faq" = "Teamgram FAQ";
-"lng_settings_faq_link" = "https://telegram.org/faq#general-questions";
+"lng_settings_faq_link" = "https://teamgram.net/faq#general-questions";
 "lng_settings_features" = "Teamgram Features";
 "lng_settings_credits" = "My Stars";
 "lng_settings_logout" = "Log out";
@@ -1421,7 +1421,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_profile_bot_settings" = "Bot Settings";
 "lng_profile_bot_help" = "Bot Help";
 "lng_profile_bot_privacy" = "Bot Privacy Policy";
-"lng_profile_bot_privacy_url" = "https://telegram.org/privacy-tpa";
+"lng_profile_bot_privacy_url" = "https://teamgram.net/privacy-tpa";
 "lng_profile_common_groups#one" = "{count} group in common";
 "lng_profile_common_groups#other" = "{count} groups in common";
 "lng_profile_similar_channels#one" = "{count} similar channel";
@@ -1768,7 +1768,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_star_ref_update" = "Update Affiliate Program";
 "lng_star_ref_update_info" = "By updating an affiliate program, you agree to the {terms} of Affiliate Programs.";
 "lng_star_ref_button_link" = "terms and conditions";
-"lng_star_ref_tos_url" = "https://telegram.org/tos/mini-apps";
+"lng_star_ref_tos_url" = "https://teamgram.net/tos/mini-apps";
 "lng_star_ref_warning_title" = "Warning";
 "lng_star_ref_warning_text" = "Once you start the affiliate program, you won't be able to decrease its commission or duration. You can only increase these parameters or end the program, which will disable all previously distributed referral links.";
 "lng_star_ref_warning_change" = "This change is irreversible. You won't be able to reduce commission or duration. You can only increase these parameters or end the program, which will disable all previously shared referral links.";
@@ -2363,7 +2363,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_group_invite_subscription_toast" = "To change the subscription fee, create a new invite link with a different price.";
 "lng_group_invite_subscription_about" = "Charge a subscription fee from people who join your channel via this link. {link}";
 "lng_group_invite_subscription_about_link" = "Learn more {emoji}";
-"lng_group_invite_subscription_about_url" = "https://telegram.org/tos/stars";
+"lng_group_invite_subscription_about_url" = "https://teamgram.net/tos/stars";
 "lng_group_invite_subscription_info_subtitle" = "Subscription fee";
 "lng_group_invite_subscription_info_title" = "{emoji} {price} / month {multiplier} {total}";
 "lng_group_invite_subscription_info_title_none" = "{emoji} {price} / month";
@@ -2616,8 +2616,8 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_premium_double_limits_about_pins#other" = "Pin up to {count} chats in your main chat list";
 
 "lng_premium_double_limits_subtitle_links" = "Public Links";
-"lng_premium_double_limits_about_links#one" = "Reserve up to {count} t.me/username link";
-"lng_premium_double_limits_about_links#other" = "Reserve up to {count} t.me/username links";
+"lng_premium_double_limits_about_links#one" = "Reserve up to {count} teamgram.me/username link";
+"lng_premium_double_limits_about_links#other" = "Reserve up to {count} teamgram.me/username links";
 
 "lng_premium_double_limits_subtitle_gifs" = "Saved GIFs";
 "lng_premium_double_limits_about_gifs#one" = "Save up to {count} GIF in your Favorite GIFs";
@@ -2698,7 +2698,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_business_button_sponsored" = "Do Not Hide Ads";
 "lng_business_about_sponsored" = "As a Premium subscriber, you don’t see any ads on Teamgram, but you can turn them on, for example, to view your own ads that you launched on the {link}";
 "lng_business_about_sponsored_link" = "Teamgram Ad Platform {emoji}";
-"lng_business_about_sponsored_url" = "https://ads.telegram.org";
+"lng_business_about_sponsored_url" = "https://teamgram.net/ads";
 
 "lng_credits_summary_title" = "Teamgram Stars";
 "lng_credits_summary_about" = "Buy Stars to unlock content and services in miniapps on Teamgram.";
@@ -2708,7 +2708,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_credits_summary_options_more" = "More Options";
 "lng_credits_summary_options_about" = "By proceeding and purchasing Stars, you agree with the {link}.";
 "lng_credits_summary_options_about_link" = "Terms and Conditions";
-"lng_credits_summary_options_about_url" = "https://telegram.org/tos/stars";
+"lng_credits_summary_options_about_url" = "https://teamgram.net/tos/stars";
 "lng_credits_summary_earn_title" = "Earn Stars";
 "lng_credits_summary_earn_about" = "Distribute links to mini apps and earn a share of their revenue in Stars.";
 "lng_credits_summary_history_tab_full" = "All Transactions";
@@ -2750,7 +2750,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_credits_box_out_confirm#one" = "Confirm and Pay {emoji} {count} Star";
 "lng_credits_box_out_confirm#other" = "Confirm and Pay {emoji} {count} Stars";
 "lng_credits_box_out_about" = "Review the {link} for Stars.";
-"lng_credits_box_out_about_link" = "https://telegram.org/tos/stars";
+"lng_credits_box_out_about_link" = "https://teamgram.net/tos/stars";
 "lng_credits_media_done_title" = "Media Unlocked";
 "lng_credits_media_done_text#one" = "**{count} Star** transferred to {chat}.";
 "lng_credits_media_done_text#other" = "**{count} Stars** transferred to {chat}.";
@@ -2969,7 +2969,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_chatbots_not_found" = "Chatbot not found.";
 "lng_chatbots_not_supported" = "This bot doesn't support Teamgram Business yet.";
 "lng_chatbots_add" = "Add";
-"lng_chatbots_info_url" = "https://telegram.org/blog/telegram-business#chatbots-for-business";
+"lng_chatbots_info_url" = "https://teamgram.net/blog/teamgram-business#chatbots-for-business";
 "lng_chatbot_status_can_reply" = "bot manages this chat";
 "lng_chatbot_status_paused" = "bot paused";
 "lng_chatbot_status_views" = "bot has access to this chat";
@@ -3576,7 +3576,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_group_about_text" = "Groups can have:";
 "lng_group_about1" = "Up to 200,000 members";
 "lng_group_about2" = "Persistent chat history";
-"lng_group_about3" = "Public links such as t.me/title";
+"lng_group_about3" = "Public links such as teamgram.me/title";
 "lng_group_about4" = "Admins with different rights";
 
 "lng_switch_stickers" = "Stickers";
@@ -4155,14 +4155,14 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_factcheck_edit_done" = "Fact check edited.";
 "lng_factcheck_remove_done" = "Fact check removed.";
 "lng_factcheck_bottom" = "This clarification was provided by a fact checking agency assigned by the department of the government of your country ({country}) responsible for combatting misinformation.";
-"lng_factcheck_links" = "Only **t.me/** links are allowed.";
+"lng_factcheck_links" = "Only **teamgram.me/** links are allowed.";
 
 "lng_paid_title" = "Paid Content";
 "lng_paid_enter_cost" = "Enter Unlock Cost";
 "lng_paid_cost_placeholder" = "Stars to Unlock";
 "lng_paid_about" = "Users will have to transfer this amount of Stars to your channel in order to view this media. {link}";
 "lng_paid_about_link" = "More about stars >";
-"lng_paid_about_link_url" = "https://telegram.org/blog/telegram-stars";
+"lng_paid_about_link_url" = "https://teamgram.net/blog/telegram-stars";
 "lng_paid_price" = "Unlock for {price}";
 
 "lng_paid_react_title" = "Star Reaction";
@@ -5824,13 +5824,13 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_sponsored_revenued_footer_search_description" = "Anyone can create an ad to display in search results for any query. Check out the **Teamgram Ad Platform** for details. {link}";
 "lng_sponsored_top_bar_hide" = "remove";
 
-"lng_telegram_features_url" = "https://t.me/TeamgramTips";
+"lng_telegram_features_url" = "https://teamgram.me/TeamgramTips";
 
 "lng_mini_apps_disclaimer_title" = "Warning";
 "lng_mini_apps_disclaimer_text" = "You are about to use a mini app operated by an independent party **not affiliated with Teamgram**. You must agree to the Terms of Use for mini apps to continue.";
 "lng_mini_apps_disclaimer_button" = "I agree to the {link}";
 "lng_mini_apps_disclaimer_link" = "Terms of Use";
-"lng_mini_apps_tos_url" = "https://telegram.org/tos/mini-apps";
+"lng_mini_apps_tos_url" = "https://teamgram.net/tos/mini-apps";
 
 "lng_ringtones_box_title" = "Notification Sound";
 "lng_ringtones_box_cloud_subtitle" = "Choose your tone";
@@ -6171,7 +6171,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_channel_earn_learn_coin_title" = "What is {emoji} TON?";
 "lng_channel_earn_learn_coin_about" = "TON is a blockchain platform and cryptocurrency that Teamgram uses for its high speed and low commissions on transactions. {link}";
 "lng_channel_earn_learn_close" = "Got it";
-"lng_channel_earn_learn_coin_link" = "https://telegram.org/blog/monetization-for-channels";
+"lng_channel_earn_learn_coin_link" = "https://teamgram.net/blog/monetization-for-channels";
 "lng_channel_earn_chart_top_hours" = "Ad impressions";
 "lng_channel_earn_chart_revenue" = "Ad rewards";
 "lng_channel_earn_chart_overriden_detail_credits" = "Rewards in Stars";
@@ -6188,7 +6188,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_bot_earn_total" = "Total lifetime proceeds";
 "lng_bot_earn_balance_title" = "Available balance";
 "lng_bot_earn_balance_about" = "Stars from your total balance can be used for ads or withdrawn as rewards 21 days after they are earned.";
-"lng_bot_earn_balance_about_url" = "https://telegram.org/tos/stars";
+"lng_bot_earn_balance_about_url" = "https://teamgram.net/tos/stars";
 "lng_bot_earn_balance_button#one" = "Withdraw {emoji} {count}";
 "lng_bot_earn_balance_button#other" = "Withdraw {emoji} {count}";
 "lng_bot_earn_balance_button_all" = "Withdraw all stars";
@@ -6265,7 +6265,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_popular_apps_info_text" = "This catalogue ranks mini apps based on their daily revenue, measured in Stars. To be listed, developers must set their main mini apps in {bot} (as described {link}), have over **1,000** daily users, and earn a daily revenue above **1,000** Stars, based on the weekly average.";
 "lng_popular_apps_info_bot" = "@botfather";
 "lng_popular_apps_info_here" = "here";
-"lng_popular_apps_info_url" = "https://core.telegram.org/bots/webapps#launching-the-main-mini-app";
+"lng_popular_apps_info_url" = "https://teamgram.net/core/bots/webapps#launching-the-main-mini-app";
 "lng_popular_apps_info_confirm" = "Understood";
 
 "lng_font_box_title" = "Choose font family";

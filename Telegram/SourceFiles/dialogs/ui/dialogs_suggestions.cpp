@@ -2696,7 +2696,7 @@ object_ptr<Ui::BoxContent> PopularAppsAboutBox(
 			lt_bot,
 			rpl::single(Ui::Text::Link(
 				u"@botfather"_q,
-				u"https://t.me/botfather"_q)),
+				u"https://teamgram.me/botfather"_q)),
 			lt_link,
 			tr::lng_popular_apps_info_here(
 			) | Ui::Text::ToLink(tr::lng_popular_apps_info_url(tr::now)),

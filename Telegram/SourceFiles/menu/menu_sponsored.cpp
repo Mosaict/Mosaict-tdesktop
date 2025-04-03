@@ -54,7 +54,7 @@ void AboutBox(
 		SponsoredPhrases phrases,
 		const Data::SponsoredMessages::Details &details,
 		Data::SponsoredReportAction report) {
-	constexpr auto kUrl = "https://promote.telegram.org"_cs;
+	constexpr auto kUrl = "https://teamgram.net/promote"_cs;
 
 	box->setWidth(st::boxWideWidth);
 
@@ -308,7 +308,7 @@ void ShowReportSponsoredBox(
 		Data::SponsoredReportAction report) {
 	const auto guideLink = Ui::Text::Link(
 		tr::lng_report_sponsored_reported_link(tr::now),
-		u"https://promote.telegram.org/guidelines"_q);
+		u"https://teamgram.net/promote/guidelines"_q);
 
 	auto performRequest = [=](
 			const auto &repeatRequest,

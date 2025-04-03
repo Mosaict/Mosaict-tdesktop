@@ -461,7 +461,7 @@ MainMenu::MainMenu(
 
 	_telegram->setMarkedText(Ui::Text::Link(
 		u"Teamgram Desktop"_q,
-		u"https://desktop.telegram.org"_q));
+		u"https://teamgram.net/desktop"_q));
 	_telegram->setLinksTrusted();
 	_version->setMarkedText(
 		Ui::Text::Link(

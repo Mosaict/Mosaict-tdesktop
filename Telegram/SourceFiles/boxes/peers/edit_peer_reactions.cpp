@@ -913,7 +913,7 @@ void EditAllowedReactionsBox(
 				tr::lng_manage_peer_reactions_paid_link([=](QString text) {
 					return Ui::Text::Link(
 						text,
-						u"https://telegram.org/tos/stars"_q);
+						u"https://teamgram.net/tos/stars"_q);
 				}),
 				Ui::Text::WithEntities));
 	}

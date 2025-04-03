@@ -31,7 +31,7 @@ rpl::producer<TextWithEntities> Text1() {
 	return tr::lng_about_text1(
 		lt_api_link,
 		tr::lng_about_text1_api(
-		) | Ui::Text::ToLink("https://core.telegram.org/api"),
+		) | Ui::Text::ToLink("https://teamgram.net/core/api"),
 		Ui::Text::WithEntities);
 }
 
@@ -132,7 +132,7 @@ void AboutBox::keyPressEvent(QKeyEvent *e) {
 }
 
 QString telegramFaqLink() {
-	const auto result = u"https://telegram.org/faq"_q;
+	const auto result = u"https://teamgram.net/faq"_q;
 	const auto langpacked = [&](const char *language) {
 		return result + '/' + language;
 	};

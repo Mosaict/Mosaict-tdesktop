@@ -637,7 +637,7 @@ void ProxiesBox::setupTopButton() {
 
 		const auto proxyString = u"proxy"_q;
 		const auto socksString = u"socks"_q;
-		const auto protocol = u"tg://"_q;
+		const auto protocol = u"tg2://"_q;
 		const auto command = base::StringViewMid(
 			local,
 			protocol.size(),
@@ -1660,7 +1660,7 @@ void ProxiesBoxController::share(const ProxyData &proxy) {
 	if (proxy.type == Type::Http) {
 		return;
 	}
-	const auto link = u"https://t.me/"_q
+	const auto link = u"https://teamgram.me/"_q
 		+ (proxy.type == Type::Socks5 ? "socks" : "proxy")
 		+ "?server=" + proxy.host + "&port=" + QString::number(proxy.port)
 		+ ((proxy.type == Type::Socks5 && !proxy.user.isEmpty())

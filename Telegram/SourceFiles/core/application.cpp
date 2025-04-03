@@ -130,7 +130,7 @@ void SetCrashAnnotationsGL() {
 base::options::toggle OptionSkipUrlSchemeRegister({
 	.id = kOptionSkipUrlSchemeRegister,
 	.name = "Skip URL scheme register",
-	.description = "Don't re-register tg:// URL scheme on autoupdate.",
+	.description = "Don't re-register tg2:// URL scheme on autoupdate.",
 });
 
 } // namespace
@@ -1098,7 +1098,7 @@ void Application::checkStartUrl() {
 }
 
 bool Application::openLocalUrl(const QString &url, QVariant context) {
-	return openCustomUrl("tg://", LocalUrlHandlers(), url, context);
+	return openCustomUrl("tg2://", LocalUrlHandlers(), url, context);
 }
 
 bool Application::openInternalUrl(const QString &url, QVariant context) {
@@ -1106,7 +1106,7 @@ bool Application::openInternalUrl(const QString &url, QVariant context) {
 }
 
 QString Application::changelogLink() const {
-	const auto base = u"https://desktop.telegram.org/changelog"_q;
+	const auto base = u"https://teamgram.net/desktop/changelog"_q;
 	const auto languages = {
 		"id",
 		"de",

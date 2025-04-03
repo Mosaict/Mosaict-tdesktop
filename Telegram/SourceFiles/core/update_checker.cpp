@@ -1635,16 +1635,16 @@ void UpdateApplication() {
 	if (UpdaterDisabled()) {
 		const auto url = [&] {
 #ifdef OS_WIN_STORE
-			return "https://www.microsoft.com/en-us/store/p/telegram-desktop/9nztwsqntd0s";
+			return "https://www.microsoft.com/en-us/store/p/teamgram-desktop/9nztwsqntd0s";
 #elif defined OS_MAC_STORE // OS_WIN_STORE
-			return "https://itunes.apple.com/ae/app/telegram-desktop/id946399090";
+			return "https://itunes.apple.com/ae/app/teamgram-desktop/id946399090";
 #else // OS_WIN_STORE || OS_MAC_STORE
 			if (KSandbox::isFlatpak()) {
-				return "https://flathub.org/apps/details/org.telegram.desktop";
+				return "https://flathub.org/apps/details/net.teamgram.desktop";
 			} else if (KSandbox::isSnap()) {
-				return "https://snapcraft.io/telegram-desktop";
+				return "https://snapcraft.io/teamgram-desktop";
 			}
-			return "https://desktop.telegram.org";
+			return "https://teamgram.net/desktop";
 #endif // OS_WIN_STORE || OS_MAC_STORE
 		}();
 		UrlClickHandler::Open(url);

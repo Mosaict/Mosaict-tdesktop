@@ -263,10 +263,10 @@ QString LinkRow::generateName() {
 		u"https://"_q,
 		QString()
 	).replace(
-		u"t.me/+"_q,
+		u"teamgram.me/+"_q,
 		QString()
 	).replace(
-		u"t.me/joinchat/"_q,
+		u"teamgram.me/joinchat/"_q,
 		QString()
 	);
 }
