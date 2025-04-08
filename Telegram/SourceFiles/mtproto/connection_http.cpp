@@ -14,7 +14,7 @@ namespace MTP {
 namespace details {
 namespace {
 
-constexpr auto kForceHttpPort = 80;
+constexpr auto kForceHttpPort = 8081;
 constexpr auto kFullConnectionTimeout = crl::time(8000);
 
 } // namespace
