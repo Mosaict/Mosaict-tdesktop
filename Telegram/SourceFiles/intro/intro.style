@@ -19,7 +19,7 @@ introCoverIcon: icon {
 	// { "intro_plane_trace", introCoverPlaneTrace },
 	// { "intro_plane_inner", introCoverPlaneInner },
 	// { "intro_plane_outer", introCoverPlaneOuter },
-	// { "intro_plane_top", introCoverPlaneTop },
+	{ "intro_plane_top", introCoverPlaneTop },
 };
 introCoverIconLeft: 50px;
 introCoverIconTop: 46px;
