@@ -172,25 +172,32 @@ jobs:
           del /S Libraries\*.pch
           del /S Libraries\*.obj
 
-      # --- START OF PATCH STEP ---
+      # --- START OF IMPROVED PATCH STEP ---
       - name: Patch cmake/options_win.cmake for WinRT fix
-        shell: bash # 使用 bash shell 来执行 sed 命令，因为 sed 在 Windows cmd 或 PowerShell 中不常用或行为不同
+        shell: bash # 使用 bash shell 来执行 sed 命令
         run: |
-          # 构造完整的 options_win.cmake 文件路径
-          CMAKE_OPTIONS_WIN_PATH="$TBUILD/$REPO_NAME/Telegram/cmake/options_win.cmake"
-          echo "Applying patch to: $CMAKE_OPTIONS_WIN_PATH"
+          # 构造子模块目录的完整路径
+          CMAKE_SUBMODULE_DIR="$TBUILD/$REPO_NAME/Telegram/cmake"
+          echo "Attempting to change directory to: $CMAKE_SUBMODULE_DIR"
           
-          # 使用 sed 命令在 'Bcrypt' 所在行之后插入 runtimeobject.lib 和 windowsapp.lib
-          # 注意：为了让 sed 识别 Windows 的换行符，可能需要 -i.bak 或其他调整
-          # 这里假设 Linux 式的 sed 可以直接处理，或者 Windows Git Bash 也自带了
-          # 插入的文本通过 '\n' 换行，并通过 ' ' 保持四个空格的缩进
-          sed -i '/Bcrypt/a \    runtimeobject.lib\n\    windowsapp.lib' "$CMAKE_OPTIONS_WIN_PATH"
+          # 尝试进入目标目录，如果失败则输出错误并退出
+          cd "$CMAKE_SUBMODULE_DIR" || { echo "ERROR: Submodule directory $CMAKE_SUBMODULE_DIR not found. Is the 'cmake' submodule cloned correctly? Exiting."; exit 1; }
+          
+          echo "Successfully changed current working directory to: $(pwd)"
+          
+          # 验证 options_win.cmake 文件是否存在于当前目录
+          echo "Listing contents of current directory to check for options_win.cmake:"
+          ls -la options_win.cmake || { echo "ERROR: options_win.cmake not found in $(pwd). Please check the file name and path. Exiting."; exit 1; }
+          
+          # 应用补丁：在 'Bcrypt' 所在行之后插入 runtimeobject.lib 和 windowsapp.lib
+          # 现在 sed 可以直接对相对路径 'options_win.cmake' 操作
+          sed -i '/Bcrypt/a \    runtimeobject.lib\n\    windowsapp.lib' options_win.cmake
           
           # 【可选】为了调试目的，打印修改后的文件内容以确认补丁是否生效
           echo "--- Patched options_win.cmake content ---"
-          cat "$CMAKE_OPTIONS_WIN_PATH"
+          cat options_win.cmake
           echo "-----------------------------------------"
-      # --- END OF PATCH STEP ---
+      # --- END OF IMPROVED PATCH STEP ---
 
       - name: Telegram Desktop build.
         if: env.ONLY_CACHE == 'false'
