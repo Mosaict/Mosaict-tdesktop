@@ -172,52 +172,45 @@ jobs:
           del /S Libraries\*.pch
           del /S Libraries\*.obj
 
-      # --- START OF IMPROVED PATCH STEP WITH MORE DEBUGGING ---
+      # --- START OF THE FINALLY CORRECTED PATCH STEP ---
       - name: Patch cmake/options_win.cmake for WinRT fix
         shell: bash # 使用 bash shell 来执行 sed 命令
         run: |
-          REPORT_DIR="$TBUILD/$REPO_NAME" # Repository root on the runner
-          TELEGRAM_DIR="$REPORT_DIR/Telegram"
-          CMAKE_SUBMODULE_DIR="$TELEGRAM_DIR/cmake"
+          # 构造外部 submodule 'cmake' 目录的完整路径，它在仓库的根目录
+          CMAKE_SUBMODULE_DIR="$TBUILD/$REPO_NAME/cmake"
+          PATCH_TARGET_FILE="options_win.cmake" # 我们确定要修改的文件名
+          FULL_PATCH_FILE_PATH="$CMAKE_SUBMODULE_DIR/$PATCH_TARGET_FILE"
           
           echo "Current working directory before patch attempt: $(pwd)"
-          echo "Repository cloned to: $REPORT_DIR"
-          echo "Telegram directory path: $TELEGRAM_DIR"
-          echo "CMake submodule directory path: $CMAKE_SUBMODULE_DIR"
-          
-          echo "--- Listing contents of $TELEGRAM_DIR ---"
-          ls -F "$TELEGRAM_DIR/" || { echo "ERROR: 'Telegram' directory not found at $TELEGRAM_DIR. Exiting."; exit 1; }
-          echo "-----------------------------------------"
-
-          echo "--- Listing contents of $CMAKE_SUBMODULE_DIR (recursive) ---"
-          # 使用 ls -RF 递归列出子模块内容，包括其子目录，这才是关键！
-          ls -RF "$CMAKE_SUBMODULE_DIR/" || { echo "ERROR: CMake submodule directory $CMAKE_SUBMODULE_DIR not found or empty. Exiting."; exit 1; }
-          echo "------------------------------------------------------------"
-
-          # 尝试进入目标目录，如果失败则输出错误并退出
           echo "Attempting to change current working directory to: $CMAKE_SUBMODULE_DIR"
-          cd "$CMAKE_SUBMODULE_DIR" || { echo "ERROR: Could not change directory to $CMAKE_SUBMODULE_DIR. Exiting."; exit 1; }
+          
+          # 尝试进入目标目录
+          cd "$CMAKE_SUBMODULE_DIR" || { echo "ERROR: Could not change directory to $CMAKE_SUBMODULE_DIR. Is the 'cmake' submodule cloned correctly at the repository root? Exiting."; exit 1; }
           
           echo "Successfully changed current working directory to: $(pwd)"
           
-          # 现在检查 options_win.cmake 文件是否存在于当前目录 (即 $CMAKE_SUBMODULE_DIR 的根目录)
-          echo "Verifying options_win.cmake existence in current directory:"
-          if [ ! -f "options_win.cmake" ]; then
-            echo "ERROR: options_win.cmake not found in $(pwd)."
-            echo "Based on previous output, check if it's in a subdirectory of 'cmake/' or named differently."
+          # 验证 options_win.cmake 文件是否存在于当前目录
+          echo "Verifying $PATCH_TARGET_FILE existence in current directory:"
+          if [ ! -f "$PATCH_TARGET_FILE" ]; then
+            echo "ERROR: $PATCH_TARGET_FILE not found in $(pwd)."
+            echo "This indicates that the external 'cmake' submodule does not contain this file, or it's misnamed."
+            # 为了更全面的调试，列出整个子模块的内容
+            echo "--- Listing contents of the external cmake submodule (current directory) ---"
+            ls -RF . || true # ls -RF . 会在当前目录执行，如果失败也不中断
+            echo "----------------------------------------------------------------------------"
             exit 1
           fi
-          echo "options_win.cmake found in $(pwd). Proceeding with patch."
+          echo "$PATCH_TARGET_FILE found. Proceeding with patch."
 
           # 应用补丁：在 'Bcrypt' 所在行之后插入 runtimeobject.lib 和 windowsapp.lib
           # 现在 sed 可以直接对相对路径 'options_win.cmake' 操作
-          sed -i '/Bcrypt/a \    runtimeobject.lib\n\    windowsapp.lib' options_win.cmake
+          sed -i '/Bcrypt/a \    runtimeobject.lib\n\    windowsapp.lib' "$PATCH_TARGET_FILE"
           
           # 【可选】为了调试目的，打印修改后的文件内容以确认补丁是否生效
-          echo "--- Patched options_win.cmake content ---"
-          cat options_win.cmake
-          echo "-----------------------------------------"
-      # --- END OF IMPROVED PATCH STEP WITH MORE DEBUGGING ---
+          echo "--- Patched $PATCH_TARGET_FILE content ---"
+          cat "$PATCH_TARGET_FILE"
+          echo "----------------------------------------------"
+      # --- END OF THE FINALLY CORRECTED PATCH STEP ---
 
       - name: Telegram Desktop build.
         if: env.ONLY_CACHE == 'false'
