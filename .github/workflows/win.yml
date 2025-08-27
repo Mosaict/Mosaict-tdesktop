@@ -1,3 +1,5 @@
+# .github/workflows/win.yml
+
 name: Windows.
 
 on:
@@ -169,6 +171,26 @@ jobs:
           del /S Libraries\*.pdb
           del /S Libraries\*.pch
           del /S Libraries\*.obj
+
+      # --- START OF PATCH STEP ---
+      - name: Patch cmake/options_win.cmake for WinRT fix
+        shell: bash # 使用 bash shell 来执行 sed 命令，因为 sed 在 Windows cmd 或 PowerShell 中不常用或行为不同
+        run: |
+          # 构造完整的 options_win.cmake 文件路径
+          CMAKE_OPTIONS_WIN_PATH="$TBUILD/$REPO_NAME/Telegram/cmake/options_win.cmake"
+          echo "Applying patch to: $CMAKE_OPTIONS_WIN_PATH"
+          
+          # 使用 sed 命令在 'Bcrypt' 所在行之后插入 runtimeobject.lib 和 windowsapp.lib
+          # 注意：为了让 sed 识别 Windows 的换行符，可能需要 -i.bak 或其他调整
+          # 这里假设 Linux 式的 sed 可以直接处理，或者 Windows Git Bash 也自带了
+          # 插入的文本通过 '\n' 换行，并通过 ' ' 保持四个空格的缩进
+          sed -i '/Bcrypt/a \    runtimeobject.lib\n\    windowsapp.lib' "$CMAKE_OPTIONS_WIN_PATH"
+          
+          # 【可选】为了调试目的，打印修改后的文件内容以确认补丁是否生效
+          echo "--- Patched options_win.cmake content ---"
+          cat "$CMAKE_OPTIONS_WIN_PATH"
+          echo "-----------------------------------------"
+      # --- END OF PATCH STEP ---
 
       - name: Telegram Desktop build.
         if: env.ONLY_CACHE == 'false'
