@@ -172,23 +172,43 @@ jobs:
           del /S Libraries\*.pch
           del /S Libraries\*.obj
 
-      # --- START OF IMPROVED PATCH STEP ---
+      # --- START OF IMPROVED PATCH STEP WITH MORE DEBUGGING ---
       - name: Patch cmake/options_win.cmake for WinRT fix
         shell: bash # 使用 bash shell 来执行 sed 命令
         run: |
-          # 构造子模块目录的完整路径
-          CMAKE_SUBMODULE_DIR="$TBUILD/$REPO_NAME/Telegram/cmake"
-          echo "Attempting to change directory to: $CMAKE_SUBMODULE_DIR"
+          REPORT_DIR="$TBUILD/$REPO_NAME" # Repository root on the runner
+          TELEGRAM_DIR="$REPORT_DIR/Telegram"
+          CMAKE_SUBMODULE_DIR="$TELEGRAM_DIR/cmake"
           
+          echo "Current working directory before patch attempt: $(pwd)"
+          echo "Repository cloned to: $REPORT_DIR"
+          echo "Telegram directory path: $TELEGRAM_DIR"
+          echo "CMake submodule directory path: $CMAKE_SUBMODULE_DIR"
+          
+          echo "--- Listing contents of $TELEGRAM_DIR ---"
+          ls -F "$TELEGRAM_DIR/" || { echo "ERROR: 'Telegram' directory not found at $TELEGRAM_DIR. Exiting."; exit 1; }
+          echo "-----------------------------------------"
+
+          echo "--- Listing contents of $CMAKE_SUBMODULE_DIR (recursive) ---"
+          # 使用 ls -RF 递归列出子模块内容，包括其子目录，这才是关键！
+          ls -RF "$CMAKE_SUBMODULE_DIR/" || { echo "ERROR: CMake submodule directory $CMAKE_SUBMODULE_DIR not found or empty. Exiting."; exit 1; }
+          echo "------------------------------------------------------------"
+
           # 尝试进入目标目录，如果失败则输出错误并退出
-          cd "$CMAKE_SUBMODULE_DIR" || { echo "ERROR: Submodule directory $CMAKE_SUBMODULE_DIR not found. Is the 'cmake' submodule cloned correctly? Exiting."; exit 1; }
+          echo "Attempting to change current working directory to: $CMAKE_SUBMODULE_DIR"
+          cd "$CMAKE_SUBMODULE_DIR" || { echo "ERROR: Could not change directory to $CMAKE_SUBMODULE_DIR. Exiting."; exit 1; }
           
           echo "Successfully changed current working directory to: $(pwd)"
           
-          # 验证 options_win.cmake 文件是否存在于当前目录
-          echo "Listing contents of current directory to check for options_win.cmake:"
-          ls -la options_win.cmake || { echo "ERROR: options_win.cmake not found in $(pwd). Please check the file name and path. Exiting."; exit 1; }
-          
+          # 现在检查 options_win.cmake 文件是否存在于当前目录 (即 $CMAKE_SUBMODULE_DIR 的根目录)
+          echo "Verifying options_win.cmake existence in current directory:"
+          if [ ! -f "options_win.cmake" ]; then
+            echo "ERROR: options_win.cmake not found in $(pwd)."
+            echo "Based on previous output, check if it's in a subdirectory of 'cmake/' or named differently."
+            exit 1
+          fi
+          echo "options_win.cmake found in $(pwd). Proceeding with patch."
+
           # 应用补丁：在 'Bcrypt' 所在行之后插入 runtimeobject.lib 和 windowsapp.lib
           # 现在 sed 可以直接对相对路径 'options_win.cmake' 操作
           sed -i '/Bcrypt/a \    runtimeobject.lib\n\    windowsapp.lib' options_win.cmake
@@ -197,7 +217,7 @@ jobs:
           echo "--- Patched options_win.cmake content ---"
           cat options_win.cmake
           echo "-----------------------------------------"
-      # --- END OF IMPROVED PATCH STEP ---
+      # --- END OF IMPROVED PATCH STEP WITH MORE DEBUGGING ---
 
       - name: Telegram Desktop build.
         if: env.ONLY_CACHE == 'false'
