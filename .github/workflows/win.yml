@@ -46,6 +46,7 @@ jobs:
     runs-on: windows-latest
 
     strategy:
+      fail-fast: false #忽略其他架构构建错误，继续构建其他架构
       matrix:
         arch: [Win32, x64]
         generator: ["", "Ninja Multi-Config"]
